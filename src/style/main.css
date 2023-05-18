@@ -79,8 +79,21 @@ body {
 }
 .game-table .odds-wrapper {
   position: absolute;
-  left: 250px;
-  bottom: 250px;
+  left: 125px;
+  bottom: 350px;
+  font-size: 1.1rem;
+}
+.game-table .odds-wrapper p {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.game-table .odds-wrapper ul {
+  list-style: none;
+  font-weight: bold;
+  margin-left: -40px;
+  margin-top: 10px;
 }
 
 .login-page {

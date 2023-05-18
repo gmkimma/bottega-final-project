@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import NavBar from '../navigation/navigation-container'
 import CardModal from '../modals/card-modal'
+import Odds from '../strategy/odds'
 
 import Deck from '../deck/deck'
 import cardDesign from '../../assets/images/home/card-design.png'
@@ -21,10 +22,13 @@ export default class Home extends Component {
       bgColor: '',
       bgImg: cardDesign,
       cardModalIsOpen: false,
-      card: ''
+      card: '',
+      dealerTotal: 0
     }
 
     this.handleCardSelection = this.handleCardSelection.bind(this)
+    this.handleModalClose = this.handleModalClose.bind(this)
+    this.handleCardClick = this.handleCardClick.bind(this)
   }
 
   handleCardSelection (card) {
@@ -34,13 +38,13 @@ export default class Home extends Component {
     })
   }
 
-  handleModalClose = e => {
+  handleModalClose () {
     this.setState({
       cardModalIsOpen: false
     })
   }
 
-  handleCardClick = e => {
+  handleCardClick () {
     this.setState({
       bgColor: 'white',
       bgImg: 'none',
@@ -70,7 +74,16 @@ export default class Home extends Component {
             >
               {this.state.card}
             </div>
-            <div className='card'></div>
+            <div
+              className='card'
+              style={{
+                backgroundColor: this.state.bgColor,
+                backgroundImage: this.state.bgImg
+              }}
+              onClick={this.handleCardClick}
+            >
+              {this.state.card}
+            </div>
             <div className='dealer-total'>Dealer Total</div>
           </div>
 
@@ -109,16 +122,7 @@ export default class Home extends Component {
             </div>
           </div>
 
-          <div className='odds-wrapper'>
-            Odds of next card
-            <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-            </ul>
-          </div>
+          <Odds deck={this.state.deck} />
         </div>
       </>
     )
