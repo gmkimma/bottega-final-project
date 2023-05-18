@@ -39,7 +39,7 @@ body {
   justify-content: space-between;
   padding-top: 25px;
   padding-bottom: 25px;
-  background-color: green;
+  background-color: #427e60;
   height: calc(100vh - 204px);
 }
 .game-table .dealer-cards {
@@ -52,6 +52,8 @@ body {
   height: 86px;
   width: 60px;
   margin: 5px;
+  font-size: 2rem;
+  cursor: pointer;
   background-color: black;
   background-image: url("../assets/images/home/card-design.png");
   background-size: contain;
@@ -68,6 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .game-table .action-wrapper .action img {
   height: 50px;
@@ -94,4 +97,27 @@ body {
   background-image: url("../assets/images/login/login.jpg");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.visible-card {
+  height: 86px;
+  width: 60px;
+  margin: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.spade-wrapper,
+.club-wrapper,
+.heart-wrapper,
+.diamond-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heart-wrapper,
+.diamond-wrapper {
+  color: red;
 }/*# sourceMappingURL=main.css.map */

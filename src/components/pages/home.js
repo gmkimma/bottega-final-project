@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import NavBar from '../navigation/navigation-container'
+import CardModal from '../modals/card-modal'
+
+import Deck from '../deck/deck'
+import cardDesign from '../../assets/images/home/card-design.png'
 
 //images for buttons
 import surrender from '../../assets/images/home/surrender.png'
@@ -9,64 +13,107 @@ import double from '../../assets/images/home/double.png'
 import stand from '../../assets/images/home/stand.png'
 import hit from '../../assets/images/home/hit.png'
 
-export default function Home () {
-  return (
-    <>
-      <NavBar />
+export default class Home extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      deck: Deck(),
+      bgColor: '',
+      bgImg: cardDesign,
+      cardModalIsOpen: false
+    }
+  }
 
-      <div className='game-table'>
-        <div className='dealer-cards'>
-          <div className='card'></div>
-          <div className='card'></div>
-          <div className='dealer-total'>Dealer Total</div>
-        </div>
+  handleModalClose = e => {
+    this.setState({
+      cardModalIsOpen: false
+    })
+  }
 
-        <div className='strategy-wrapper'>
-          <div className='strategy'>
-            <h3>You should probably do this...</h3>
-          </div>
-        </div>
+  handleCardClick = e => {
+    this.setState({
+      bgColor: 'white',
+      bgImg: 'none',
+      cardModalIsOpen: true
+    })
+  }
 
-        <div className='player-cards'>
-          <div className='card'></div>
-          <div className='card'></div>
-          <div className='player-total'>Player Total</div>
-        </div>
+  render () {
+    return (
+      <>
+        <CardModal
+          handleModalClose={this.handleModalClose}
+          modalIsOpen={this.state.cardModalIsOpen}
+        />
+        <NavBar />
 
-        <div className='action-wrapper'>
-          <div className='action'>
-            <img src={surrender} alt='surrender' />
-            Surrender
+        <div className='game-table'>
+          <div className='dealer-cards'>
+            <div
+              className='card'
+              style={{
+                backgroundColor: this.state.bgColor,
+                backgroundImage: this.state.bgImg
+              }}
+              onClick={this.handleCardClick}
+            >
+              {
+                this.state.deck[
+                  Math.floor(Math.random() * this.state.deck.length)
+                ]
+              }
+            </div>
+            <div className='card'></div>
+            <div className='dealer-total'>Dealer Total</div>
           </div>
-          <div className='action'>
-            <img src={split} alt='split' />
-            Split
-          </div>
-          <div className='action'>
-            <img src={double} alt='double' />
-            Double
-          </div>
-          <div className='action'>
-            <img src={stand} alt='stand' />
-            Stand
-          </div>
-          <div className='action'>
-            <img src={hit} alt='hit' />
-            Hit
-          </div>
-        </div>
 
-        <div className='odds-wrapper'>
-          Odds of next card
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
+          <div className='strategy-wrapper'>
+            <div className='strategy'>
+              <h3>You should probably do this...</h3>
+            </div>
+          </div>
+
+          <div className='player-cards'>
+            <div className='card'></div>
+            <div className='card'></div>
+            <div className='player-total'>Player Total</div>
+          </div>
+
+          <div className='action-wrapper'>
+            <div className='action'>
+              <img src={surrender} alt='surrender' />
+              Surrender
+            </div>
+            <div className='action'>
+              <img src={split} alt='split' />
+              Split
+            </div>
+            <div className='action'>
+              <img src={double} alt='double' />
+              Double
+            </div>
+            <div className='action'>
+              <img src={stand} alt='stand' />
+              Stand
+            </div>
+            <div className='action'>
+              <img src={hit} alt='hit' />
+              Hit
+            </div>
+          </div>
+
+          <div className='odds-wrapper'>
+            Odds of next card
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </>
-  )
+      </>
+    )
+  }
 }

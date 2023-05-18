@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding-top: 25px;
   padding-bottom: 25px;
-  background-color: green;
+  background-color: #427e60;
   height: calc(100vh - 204px);
 }
 .game-table .dealer-cards {
@@ -18,6 +18,8 @@
   height: 86px;
   width: 60px;
   margin: 5px;
+  font-size: 2rem;
+  cursor: pointer;
   background-color: black;
   background-image: url("../assets/images/home/card-design.png");
   background-size: contain;
@@ -34,6 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .game-table .action-wrapper .action img {
   height: 50px;
