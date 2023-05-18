@@ -38,8 +38,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding-top: 25px;
+  padding-bottom: 25px;
   background-color: green;
-  height: calc(100vh - 154px);
+  height: calc(100vh - 204px);
 }
 .game-table .dealer-cards {
   display: flex;
@@ -51,16 +52,32 @@ body {
   height: 86px;
   width: 60px;
   margin: 5px;
-  background-color: red;
+  background-color: black;
+  background-image: url("../assets/images/home/card-design.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .game-table .action-wrapper {
   display: flex;
   width: 30%;
   justify-content: space-around;
+  font-weight: bold;
+}
+.game-table .action-wrapper .action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.game-table .action-wrapper .action img {
+  height: 50px;
+  width: 50px;
+  padding-bottom: 15px;
 }
 .game-table .odds-wrapper {
   position: absolute;
-  left: 10px;
+  left: 250px;
+  bottom: 250px;
 }
 
 .login-page {
