@@ -11,6 +11,10 @@ export default class ShowDeck extends Component {
     }
   }
 
+  handleClickCard = e => {
+    this.props.handleCardSelection(e.target.outerText)
+  }
+
   render () {
     const spadeCards = []
     for (let i = 0; i < 13; i++) {
@@ -34,7 +38,7 @@ export default class ShowDeck extends Component {
 
     return (
       <>
-        <div className='spade-wrapper'>
+        <div className='spade-wrapper' onClick={this.handleClickCard}>
           {spadeCards.map((card, index) => {
             return (
               <div key={index} className='visible-card'>
@@ -44,30 +48,30 @@ export default class ShowDeck extends Component {
           })}
         </div>
 
-        <div className='heart-wrapper'>
+        <div className='heart-wrapper' onClick={this.handleClickCard}>
           {heartCards.map((card, index) => {
             return (
-              <div key={index} className='visible-card'>
+              <div key={index + 13} className='visible-card'>
                 {card}
               </div>
             )
           })}
         </div>
 
-        <div className='club-wrapper'>
+        <div className='club-wrapper' onClick={this.handleClickCard}>
           {clubCards.map((card, index) => {
             return (
-              <div key={index} className='visible-card'>
+              <div key={index + 26} className='visible-card'>
                 {card}
               </div>
             )
           })}
         </div>
 
-        <div className='diamond-wrapper'>
+        <div className='diamond-wrapper' onClick={this.handleClickCard}>
           {diamondCards.map((card, index) => {
             return (
-              <div key={index} className='visible-card'>
+              <div key={index + 39} className='visible-card'>
                 {card}
               </div>
             )

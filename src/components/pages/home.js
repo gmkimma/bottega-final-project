@@ -20,8 +20,18 @@ export default class Home extends Component {
       deck: Deck(),
       bgColor: '',
       bgImg: cardDesign,
-      cardModalIsOpen: false
+      cardModalIsOpen: false,
+      card: ''
     }
+
+    this.handleCardSelection = this.handleCardSelection.bind(this)
+  }
+
+  handleCardSelection (card) {
+    this.setState({
+      cardModalIsOpen: false,
+      card: card
+    })
   }
 
   handleModalClose = e => {
@@ -42,6 +52,7 @@ export default class Home extends Component {
     return (
       <>
         <CardModal
+          handleCardSelection={this.handleCardSelection}
           handleModalClose={this.handleModalClose}
           modalIsOpen={this.state.cardModalIsOpen}
         />
@@ -57,11 +68,7 @@ export default class Home extends Component {
               }}
               onClick={this.handleCardClick}
             >
-              {
-                this.state.deck[
-                  Math.floor(Math.random() * this.state.deck.length)
-                ]
-              }
+              {this.state.card}
             </div>
             <div className='card'></div>
             <div className='dealer-total'>Dealer Total</div>

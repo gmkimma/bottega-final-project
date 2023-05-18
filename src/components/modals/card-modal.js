@@ -24,7 +24,14 @@ export default class CardModal extends Component {
         backgroundColor: 'rgba(1, 1, 1, 0.75)'
       }
     }
+
+    this.handleCardSelection = this.handleCardSelection.bind(this)
   }
+
+  handleCardSelection (card) {
+    this.props.handleCardSelection(card)
+  }
+
   render () {
     return (
       <ReactModal
@@ -34,7 +41,7 @@ export default class CardModal extends Component {
         }}
         isOpen={this.props.modalIsOpen}
       >
-        <ShowDeck />
+        <ShowDeck handleCardSelection={this.handleCardSelection} />
       </ReactModal>
     )
   }
