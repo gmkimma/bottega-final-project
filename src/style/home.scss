@@ -1,0 +1,35 @@
+.game-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+  background-color: green;
+  height: calc(100vh - 154px);
+
+  .dealer-cards {
+    display: flex;
+  }
+
+  .player-cards {
+    display: flex;
+  }
+
+  .card {
+    height: 86px;
+    width: 60px;
+    margin: 5px;
+    background-color: red;
+  }
+
+  .action-wrapper {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+  }
+
+  .odds-wrapper {
+    position: absolute;
+    left: 10px;
+  }
+}

@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+}
+.nav-wrapper .left-side img {
+  height: 150px;
+}
+.nav-wrapper .right-side {
+  display: flex;
+  align-items: flex-end;
+}
+.nav-wrapper .right-side .nav-link-wrapper {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.nav-wrapper .right-side .nav-link-wrapper a {
+  color: white;
+  text-decoration: none;
+}
+.nav-wrapper .right-side .nav-link-wrapper a:hover {
+  color: rgb(155, 155, 155);
+}
+
+.game-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+  background-color: green;
+  height: calc(100vh - 154px);
+}
+.game-table .dealer-cards {
+  display: flex;
+}
+.game-table .player-cards {
+  display: flex;
+}
+.game-table .card {
+  height: 86px;
+  width: 60px;
+  margin: 5px;
+  background-color: red;
+}
+.game-table .action-wrapper {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+.game-table .odds-wrapper {
+  position: absolute;
+  left: 10px;
+}
+
+.login-page {
+  background-color: rgb(155, 155, 155);
+}
+.login-page .login-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 254px);
+  margin: 50px 100px 0 100px;
+  padding-bottom: 50px;
+}
+.login-page .login-wrapper .right-side {
+  background-image: url("../assets/images/login/login.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}/*# sourceMappingURL=main.css.map */
