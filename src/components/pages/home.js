@@ -5,7 +5,6 @@ import CardModal from '../modals/card-modal'
 import Odds from '../strategy/odds'
 
 import Deck from '../deck/deck'
-import cardDesign from '../../assets/images/home/card-design.png'
 
 //images for buttons
 import surrender from '../../assets/images/home/surrender.png'
@@ -19,22 +18,69 @@ export default class Home extends Component {
     super(props)
     this.state = {
       deck: Deck(),
-      bgColor: '',
-      bgImg: cardDesign,
       cardModalIsOpen: false,
-      card: '',
-      dealerTotal: 0
+      dealerCardOne: {
+        bgColor: '',
+        bgImg: '',
+        card: ''
+      },
+      dealerCardTwo: {
+        bgColor: '',
+        bgImg: '',
+        card: ''
+      },
+      dealerTotal: 0,
+      playerTotal: 0
     }
 
     this.handleCardSelection = this.handleCardSelection.bind(this)
     this.handleModalClose = this.handleModalClose.bind(this)
-    this.handleCardClick = this.handleCardClick.bind(this)
+    this.handleDealerCardOneClick = this.handleDealerCardOneClick.bind(this)
+    this.calculateDealerTotal = this.calculateDealerTotal.bind(this)
+    this.handleDealerCardTwoClick = this.handleDealerCardTwoClick.bind(this)
+  }
+
+  calculateDealerTotal () {
+    let card = this.state.dealerCardOne.card
+    if (card !== '') {
+      card = card.slice(0, -1)
+
+      if (card === 'K' || card === 'Q' || card === 'J') {
+        card = '10'
+      }
+      if (card === 'A') {
+        card = '11'
+      }
+      this.setState({
+        dealerTotal: parseInt(card, 10)
+      })
+    }
   }
 
   handleCardSelection (card) {
     this.setState({
-      cardModalIsOpen: false,
-      card: card
+      dealerCardOne: {
+        bgColor: 'white',
+        bgImg: 'none',
+        card: card
+      },
+      cardModalIsOpen: false
+    })
+
+    const index = this.state.deck.indexOf(card)
+    if (index > -1) {
+      this.state.deck.splice(index, 1)
+    }
+
+    let c = card.slice(0, -1)
+    if (c === 'K' || c === 'Q' || c === 'J') {
+      c = '10'
+    }
+    if (c === 'A') {
+      c = '11'
+    }
+    this.setState({
+      dealerTotal: this.state.dealerTotal + parseInt(c)
     })
   }
 
@@ -44,11 +90,17 @@ export default class Home extends Component {
     })
   }
 
-  handleCardClick () {
+  handleDealerCardOneClick () {
     this.setState({
-      bgColor: 'white',
-      bgImg: 'none',
-      cardModalIsOpen: true
+      cardModalIsOpen: true,
+      dealerTotal: 0
+    })
+  }
+
+  handleDealerCardTwoClick () {
+    this.setState({
+      cardModalIsOpen: true,
+      dealerTotal: 0
     })
   }
 
@@ -60,6 +112,7 @@ export default class Home extends Component {
           handleModalClose={this.handleModalClose}
           modalIsOpen={this.state.cardModalIsOpen}
         />
+
         <NavBar />
 
         <div className='game-table'>
@@ -67,36 +120,38 @@ export default class Home extends Component {
             <div
               className='card'
               style={{
-                backgroundColor: this.state.bgColor,
-                backgroundImage: this.state.bgImg
+                backgroundColor: this.state.dealerCardOne.bgColor,
+                backgroundImage: this.state.dealerCardOne.bgImg
               }}
-              onClick={this.handleCardClick}
+              onClick={this.handleDealerCardOneClick}
             >
-              {this.state.card}
+              <span>{this.state.dealerCardOne.card}</span>
             </div>
             <div
               className='card'
               style={{
-                backgroundColor: this.state.bgColor,
-                backgroundImage: this.state.bgImg
+                backgroundColor: this.state.dealerCardTwo.bgColor,
+                backgroundImage: this.state.dealerCardTwo.bgImg
               }}
-              onClick={this.handleCardClick}
+              onClick={this.handleDealerCardTwoClick}
             >
-              {this.state.card}
+              {this.state.dealerCardTwo.card}
             </div>
-            <div className='dealer-total'>Dealer Total</div>
+            <div className='dealer-total' onClick={this.calculateDealerTotal}>
+              {this.state.dealerTotal}
+            </div>
           </div>
 
           <div className='strategy-wrapper'>
             <div className='strategy'>
-              <h3>You should probably do this...</h3>
+              <h3>(You should probably do this...)</h3>
             </div>
           </div>
 
           <div className='player-cards'>
             <div className='card'></div>
             <div className='card'></div>
-            <div className='player-total'>Player Total</div>
+            <div className='player-total'>{this.state.playerTotal}</div>
           </div>
 
           <div className='action-wrapper'>
