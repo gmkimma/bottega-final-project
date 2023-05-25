@@ -12,9 +12,12 @@ import split from '../../assets/images/home/split.png'
 import double from '../../assets/images/home/double.png'
 import stand from '../../assets/images/home/stand.png'
 import hit from '../../assets/images/home/hit.png'
+import deal from '../../assets/images/home/deal.png'
+
+const numOfDecks = 8
 
 function Home () {
-  const deck = Deck(6)
+  const deck = Deck(numOfDecks)
   const [cardModalIsOpen, setCardModalIsOpen] = useState(false)
   const [dealerCardOne, setDealerCardOne] = useState({
     bgColor: '',
@@ -151,6 +154,10 @@ function Home () {
           <div className='action'>
             <img src={hit} alt='hit' />
             Hit
+          </div>
+          <div className='action'>
+            <img src={deal} alt='deal' />
+            Deal
           </div>
         </div>
 

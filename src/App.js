@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './components/pages/home'
 import Login from './components/pages/login'
 import NoMatch from './components/pages/no-match'
-import './style/main.css'
+import './style/main.scss'
 
 const router = createBrowserRouter([
   {
@@ -15,10 +15,12 @@ const router = createBrowserRouter([
   { element: <Login />, path: '/login', errorElement: <NoMatch /> }
 ])
 
-export default function App () {
+function App () {
   return (
     <>
       <RouterProvider router={router} />
     </>
   )
 }
+
+export default App
