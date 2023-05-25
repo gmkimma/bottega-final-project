@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactModal from 'react-modal'
 
 import ShowDeck from '../deck/show-deck'
 
 ReactModal.setAppElement('#root')
 
-export default function CardModal (props) {
-  //Creating default customStyles
-  const [customStyles, setCustomStyles] = useState({
+export default function DeckModal (props) {
+  //Creating styles for the modal
+  const customStyles = {
     content: {
       top: '50%',
       left: '50%',
@@ -21,10 +21,7 @@ export default function CardModal (props) {
     overlay: {
       backgroundColor: 'rgba(1, 1, 1, 0.75)'
     }
-  })
-
-  //Used to update customStyles
-  // setCustomStyles()
+  }
 
   //Passing the picked card up to parent
   function handleCardSelection (card) {

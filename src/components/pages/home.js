@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import NavBar from '../navigation/navigation-container'
-import CardModal from '../modals/card-modal'
+import DeckModal from '../modals/deck-modal'
 import Odds from '../strategy/odds'
 
 import Deck from '../deck/deck'
@@ -17,7 +17,7 @@ export default class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      deck: Deck(),
+      deck: Deck(6),
       cardModalIsOpen: false,
       dealerCardOne: {
         bgColor: '',
@@ -95,6 +95,7 @@ export default class Home extends Component {
       cardModalIsOpen: true,
       dealerTotal: 0
     })
+    console.log(this.state.deck)
   }
 
   handleDealerCardTwoClick () {
@@ -107,7 +108,7 @@ export default class Home extends Component {
   render () {
     return (
       <>
-        <CardModal
+        <DeckModal
           handleCardSelection={this.handleCardSelection}
           handleModalClose={this.handleModalClose}
           modalIsOpen={this.state.cardModalIsOpen}
