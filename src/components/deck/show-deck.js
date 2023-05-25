@@ -2,7 +2,7 @@ import React from 'react'
 
 import Deck from './deck'
 
-export default function ShowDeck (props) {
+function ShowDeck (props) {
   const deck = Deck()
 
   //Returns the card that is clicked in the card modal
@@ -91,3 +91,5 @@ export default function ShowDeck (props) {
     </>
   )
 }
+
+export default ShowDeck

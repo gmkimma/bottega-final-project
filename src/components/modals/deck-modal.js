@@ -5,7 +5,7 @@ import ShowDeck from '../deck/show-deck'
 
 ReactModal.setAppElement('#root')
 
-export default function DeckModal (props) {
+function DeckModal (props) {
   //Creating styles for the modal
   const customStyles = {
     content: {
@@ -40,3 +40,5 @@ export default function DeckModal (props) {
     </ReactModal>
   )
 }
+
+export default DeckModal

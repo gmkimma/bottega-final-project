@@ -1,4 +1,4 @@
-export default function Deck (numDecks = 1) {
+function Deck (numDecks = 1) {
   const values = [
     'A',
     'K',
@@ -33,3 +33,5 @@ export default function Deck (numDecks = 1) {
 
   return deck
 }
+
+export default Deck

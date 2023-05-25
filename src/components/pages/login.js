@@ -2,7 +2,7 @@ import React from 'react'
 
 import NavBar from '../navigation/navigation-container'
 
-export default function Login () {
+function Login () {
   return (
     <>
       <div className='login-page'>
@@ -18,3 +18,5 @@ export default function Login () {
     </>
   )
 }
+
+export default Login

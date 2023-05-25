@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Odds (props) {
+function Odds (props) {
   const deck = props.deck
   const newDeck = []
   const numOfCards = {}
@@ -43,3 +43,5 @@ export default function Odds (props) {
     </>
   )
 }
+
+export default Odds

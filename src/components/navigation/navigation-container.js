@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import logo from '../../assets/images/navigation/logo.png'
 
-export default function NavBar () {
+function NavBar () {
   return (
     <div className='nav-wrapper'>
       <div className='left-side'>
@@ -19,3 +19,5 @@ export default function NavBar () {
     </div>
   )
 }
+
+export default NavBar

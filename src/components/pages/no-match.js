@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import NavBar from '../navigation/navigation-container'
 
-export default function NoMatch () {
+function NoMatch () {
   return (
     <>
       <NavBar />
@@ -12,3 +12,5 @@ export default function NoMatch () {
     </>
   )
 }
+
+export default NoMatch
