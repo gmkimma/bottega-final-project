@@ -13,7 +13,7 @@ import double from '../../assets/images/home/double.png'
 import stand from '../../assets/images/home/stand.png'
 import hit from '../../assets/images/home/hit.png'
 
-export default function Home (props) {
+export default function Home () {
   const [deck, setDeck] = useState(Deck(6))
   const [cardModalIsOpen, setCardModalIsOpen] = useState(false)
   const [dealerCardOne, setDealerCardOne] = useState({
